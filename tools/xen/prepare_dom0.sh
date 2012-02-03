@@ -3,7 +3,7 @@ set -o xtrace
 set -o errexit
 
 # Install basics for vi and git
-yum -y  --enablerepo=base install gcc make vim-enhanced zlib-devel openssl-devel
+yum -y  --enablerepo=base --disablerepo=citrix install gcc make vim-enhanced zlib-devel openssl-devel
 
 # Simple but usable vimrc
 if [ ! -e /root/.vimrc ]; then
