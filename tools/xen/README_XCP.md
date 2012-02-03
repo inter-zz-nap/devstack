@@ -6,7 +6,7 @@ some pointers on how to get started.
 
 **These instructions have only been tested with OpenStack trunk as of February 3rd, 2012**
 
-Step 1: Install Xenserver
+Step 1: Install XCP
 ------------------------
 Install XCP 1.1 on a clean box. You can download XCP 1.1 at 
 http://xen.org/download/xcp/index_1.1.0.html 
