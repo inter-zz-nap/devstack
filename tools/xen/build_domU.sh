@@ -220,7 +220,7 @@ EOF
 # Install plugins
 cp -pr $TOP_DIR/nova/plugins/xenserver/xenapi/etc/xapi.d /etc/
 chmod a+x /etc/xapi.d/plugins/*
-yum --enablerepo=base install -y parted
+yum --enablerepo=base --disablerepo=citrix install -y parted
 mkdir -p /boot/guest
 
 # Set local storage il8n
