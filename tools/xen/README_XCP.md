@@ -40,7 +40,7 @@ You now must change the XCP switch backend from Openvswitch to iptables. *The cu
     Configure system for bridge networking
     You *MUST* now reboot your system
 
-Obey XCP commands and reboot your server.
+Obey XCP and reboot your server.
 
 Step 3: Prepare Dom0
 -------------------

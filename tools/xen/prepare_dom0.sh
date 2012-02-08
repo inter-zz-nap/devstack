@@ -37,5 +37,6 @@ fi
 # Clone devstack
 DEVSTACK=/root/devstack
 if [ ! -d $DEVSTACK ]; then
-    git clone git://github.com/cloudbuilders/devstack.git $DEVSTACK
+    git clone git://github.com/internap/devstack.git $DEVSTACK
+    git checkout xcp
 fi
