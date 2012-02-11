@@ -120,9 +120,9 @@ mkdir -p /boot/guest
 
 # Shutdown previous runs
 DO_SHUTDOWN=${DO_SHUTDOWN:-1}
-if [ "$DO_SHUTDOWN" == "1" ]; then
+if [ "$DO_SHUTDOWN" = "1" ]; then
     # Shutdown all domU's that created previously
-    xe vm-list --minimal name-label="$LABEL" | xargs ./scripts/uninstall-os-vpx.sh
+    xe vm-list --minimal name-label="$LABEL" | xargs $TOP_DIR/scripts/uninstall-os-vpx.sh
 
     # Destroy any instances that were launched
     for uuid in `xe vm-list | grep -1 instance | grep uuid | sed "s/.*\: //g"`; do
@@ -143,7 +143,7 @@ $TOP_DIR/scripts/install-os-vpx.sh -f $XVA -v $VM_BR -m $MGT_BR -p $PUB_BR
 
 # If we have copied our ssh credentials, use ssh to monitor while the installation runs
 WAIT_TILL_LAUNCH=${WAIT_TILL_LAUNCH:-1}
-if [ "$WAIT_TILL_LAUNCH" == "1" ]  && [ -e ~/.ssh/id_rsa.pub  ] && [ "$COPYENV" = "1" ]; then
+if [ "$WAIT_TILL_LAUNCH" = "1" ]  && [ -e ~/.ssh/id_rsa.pub  ] && [ "$COPYENV" = "1" ]; then
     # Done creating the container, let's tail the log
     echo
     echo "============================================================="

@@ -29,7 +29,7 @@ MGT_BR=${MGT_BR:-xapi2}
 MGT_VLAN=${MGT_VLAN:-101}
 
 # XVA Directory
-XVA_DIR=${XVA_DIR:-xvas}
+XVA_DIR=${XVA_DIR:-$TOP_DIR/xvas}
 
 # Path to xva file
 XVA=${XVA:-$XVA_DIR/$GUEST_NAME.xva }
