@@ -21,6 +21,9 @@ getting started:
 * XCP Gateway: 192.168.1.1
 * XCP DNS: 192.168.1.1
 
+**You must use static a static IP on your XCP host, not DHCP.**
+**On XCP, DHCP does not work in bridge mode**
+
 Step 2: Disable Openvswitch and Reboot
 --------------------------------------
 
@@ -78,7 +81,14 @@ Of course, use real passwords if this machine is exposed.
     ACTIVE_TIMEOUT=45
     EOF
 
-Step 5: Run ./build_domU.sh
+Step 5: Run ./build_xva.sh
+--------------------------
+This script creates the base Xen all-in-one image.  This script can be run
+on another machine if your dom0 does not have enough free disk space.
+
+**If you want to run this script in dom0 for convenience, edit ../../stackrc and change all the "http://" references to "git://" so the devstack source will download properly**
+
+Step 6: Run ./build_domU.sh
 --------------------------
 This script does a lot of stuff, it is probably best to read it in its entirety.
 But in a nutshell, it performs the following:
