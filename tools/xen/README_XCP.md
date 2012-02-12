@@ -22,7 +22,7 @@ getting started:
 * XCP DNS: 192.168.1.1
 
 **You must use static a static IP on your XCP host, not DHCP.**
-**On XCP, DHCP does not work in bridge mode**
+**On XCP, DHCP does not work in bridge mode for guest VMs**
 
 Step 2: Disable Openvswitch and Reboot
 --------------------------------------
@@ -50,7 +50,7 @@ Step 3: Prepare Dom0
 At this point, your server is missing some critical software that you will
 need to run devstack (like git).  Do this to install required software:
 
-    wget --no-check-certificate https://github.com/cloudbuilders/devstack/raw/xen/tools/xen/prepare_dom0.sh
+    wget --no-check-sertificate https://github.com/internap/devstack/raw/xcp/tools/xen/prepare_dom0.sh
     chmod 755 prepare_dom0.sh
     ./prepare_dom0.sh
 
