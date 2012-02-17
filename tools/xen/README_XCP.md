@@ -50,7 +50,7 @@ Step 3: Prepare Dom0
 At this point, your server is missing some critical software that you will
 need to run devstack (like git).  Do this to install required software:
 
-    wget --no-check-sertificate https://github.com/internap/devstack/raw/xcp/tools/xen/prepare_dom0.sh
+    wget --no-check-certificate https://github.com/internap/devstack/raw/xcp/tools/xen/prepare_dom0.sh
     chmod 755 prepare_dom0.sh
     ./prepare_dom0.sh
 
