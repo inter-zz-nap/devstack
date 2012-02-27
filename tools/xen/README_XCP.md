@@ -1,15 +1,13 @@
 Getting Started With XCP 1.1 and Devstack
 ===============================================
-The purpose of the code in this directory it to help developers bootstrap
-a XCP 1.1 + Openstack development environment.  This file gives
-some pointers on how to get started.
+The purpose of the code in this directory it to help developers bootstrap a XCP 1.1 + Openstack development environment.  This file gives some pointers on how to get started.
 
 **These instructions have only been tested with OpenStack trunk as of February 3rd, 2012**
 
 Step 1: Install XCP
 ------------------------
 Install XCP 1.1 on a clean box. You can download XCP 1.1 at 
-http://xen.org/download/xcp/index_1.1.0.html 
+[http://xen.org/download/xcp/index_1.1.0.html](http://xen.org/download/xcp/index_1.1.0.html) 
 
 **Be sure to choose "thin provisioning" when when installing your server.**
 
@@ -104,12 +102,14 @@ Step 5: Do cloudy stuff!
 
 To use the image, ssh into the newly created domU and source the openrc file:
 
-    stack@ALLINONE:~$ **cd devstack/**
-    stack@ALLINONE:~/devstack$ **source openrc**
+    stack@ALLINONE:~$ cd devstack/
+    stack@ALLINONE:~/devstack$ source openrc
 
 Then start using the nova client to start images:
 
-    stack@ALLINONE:~/devstack$ nova boot --image 8833315e-eea6-46a6-8961-aa3c44baf112 --flavor 1 ken
+    stack@ALLINONE:~/devstack$ nova boot \
+    --image 8833315e-eea6-46a6-8961-aa3c44baf112 \
+    --flavor 1 ken
     +-------------------+----------------------------------------------------------+
     |      Property     |                          Value                           |
     +-------------------+----------------------------------------------------------+
