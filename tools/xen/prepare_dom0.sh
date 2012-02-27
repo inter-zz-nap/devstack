@@ -1,4 +1,4 @@
-#!/bin/sh
+#i!/bin/sh
 set -o xtrace
 set -o errexit
 
@@ -30,12 +30,7 @@ if ! which git; then
     wget http://git-core.googlecode.com/files/git-1.7.7.tar.gz
     tar xfv git-1.7.7.tar.gz
     cd $GITDIR
-    ./configure
+    ./configure --with-curl --with-expat
     make install
 fi
 
-# Clone devstack
-DEVSTACK=/root/devstack
-if [ ! -d $DEVSTACK ]; then
-    git clone -b xcp git://github.com/internap/devstack.git $DEVSTACK
-fi

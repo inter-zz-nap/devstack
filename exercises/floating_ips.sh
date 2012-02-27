@@ -48,15 +48,6 @@ DEFAULT_FLOATING_POOL=${DEFAULT_FLOATING_POOL:-nova}
 # Additional floating IP pool and range
 TEST_FLOATING_POOL=${TEST_FLOATING_POOL:-test}
 
-# Get a token for clients that don't support service catalog
-# ==========================================================
-
-# manually create a token by querying keystone (sending JSON data).  Keystone
-# returns a token and catalog of endpoints.  We use python to parse the token
-# and save it.
-
-TOKEN=`curl -s -d  "{\"auth\":{\"passwordCredentials\": {\"username\": \"$OS_USERNAME\", \"password\": \"$OS_PASSWORD\"}}}" -H "Content-type: application/json" ${OS_AUTH_URL%/}/tokens | python -c "import sys; import json; tok = json.loads(sys.stdin.read()); print tok['access']['token']['id'];"`
-
 # Launching a server
 # ==================
 
@@ -70,10 +61,10 @@ nova list
 nova image-list
 
 # But we recommend using glance directly
-glance -f -A $TOKEN -H $GLANCE_HOST index
+glance -f index
 
 # Grab the id of the image to launch
-IMAGE=`glance -f -A $TOKEN -H $GLANCE_HOST index | egrep $DEFAULT_IMAGE_NAME | head -1 | cut -d" " -f1`
+IMAGE=`glance -f index | egrep $DEFAULT_IMAGE_NAME | head -1 | cut -d" " -f1`
 
 # Security Groups
 # ---------------
@@ -204,8 +195,11 @@ nova floating-ip-delete $TEST_FLOATING_IP
 # shutdown the server
 nova delete $VM_UUID
 
+# make sure the VM shuts down within a reasonable time
+if ! timeout $TERMINATE_TIMEOUT sh -c "while nova show $VM_UUID | grep status | grep -q ACTIVE; do sleep 1; done"; then
+    echo "server didn't shut down!"
+    exit 1
+fi
+
 # Delete a secgroup
 nova secgroup-delete $SECGROUP
-
-# FIXME: validate shutdown within 5 seconds
-# (nova show $NAME returns 1 or status != ACTIVE)?

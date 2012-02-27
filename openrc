@@ -42,7 +42,7 @@ export OS_PASSWORD=${NOVA_PASSWORD}
 #
 # *NOTE*: Using the 2.0 *auth api* does not mean that compute api is 2.0.  We
 # will use the 1.1 *compute api*
-export NOVA_URL=${NOVA_URL:-http://$SERVICE_HOST:5000/v2.0/}
+export NOVA_URL=${NOVA_URL:-http://$SERVICE_HOST:5000/v2.0}
 export OS_AUTH_URL=${NOVA_URL}
 
 # Currently novaclient needs you to specify the *compute api* version.  This
@@ -56,13 +56,13 @@ export NOVA_REGION_NAME=${NOVA_REGION_NAME:-RegionOne}
 export EC2_URL=${EC2_URL:-http://$SERVICE_HOST:8773/services/Cloud}
 
 # Access key is set in the initial keystone data to be the same as username
-export EC2_ACCESS_KEY=${USERNAME:-demo}
+export EC2_ACCESS_KEY=${DEMO_ACCESS}
 
 # Secret key is set in the initial keystone data to the admin password
-export EC2_SECRET_KEY=${ADMIN_PASSWORD:-secrete}
+export EC2_SECRET_KEY=${DEMO_SECRET}
 
 # Euca2ools Certificate stuff for uploading bundles
-# You can get your certs using ./tools/get_certs.sh
+# See exercises/bundle.sh to see how to get certs using nova cli
 NOVARC=$(readlink -f "${BASH_SOURCE:-${0}}" 2>/dev/null) ||
         NOVARC=$(python -c 'import os,sys; print os.path.abspath(os.path.realpath(sys.argv[1]))' "${BASH_SOURCE:-${0}}")
 NOVA_KEY_DIR=${NOVARC%/*}
@@ -89,3 +89,6 @@ export RUNNING_TIMEOUT=${RUNNING_TIMEOUT:-$(($BOOT_TIMEOUT + $ACTIVE_TIMEOUT))}
 
 # Max time to wait for proper IP association and dis-association.
 export ASSOCIATE_TIMEOUT=${ASSOCIATE_TIMEOUT:-15}
+
+# Max time to wait for a vm to terminate
+export TERMINATE_TIMEOUT=${TERMINATE_TIMEOUT:-30}
