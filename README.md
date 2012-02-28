@@ -32,6 +32,8 @@ We also provide an environment file that you can use to interact with your cloud
 
     # source openrc file to load your environment with osapi and ec2 creds
     . openrc
+    # source nova autocompletion to auto complete long nova commands
+    . ~/.nova_bash_completion
     # list instances
     nova list
     # list instances using ec2 api
