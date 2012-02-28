@@ -3,6 +3,9 @@
 # Load local configuration
 source ./stackrc
 
+# source nova autocompletion
+source files/nova_bash_completion
+
 # Set api HOST_IP endpoint.  SERVICE_HOST may also be used to specify the endpoint,
 # which is convenient for some localrc configurations.
 HOST_IP=${HOST_IP:-127.0.0.1}
