@@ -1610,7 +1610,7 @@ if is_service_enabled g-reg; then
 fi
 
 # add nova completion scripts to shell
-cp files/nova_bash_completion.sh ~/.nova_bash_completion
+cp $TOP_DIR/files/nova_bash_completion.sh ~/.nova_bash_completion
 echo "source ~/.nova_bash_completion" > ~/.bash_profile
 source ~/.nova_bash_completion
 
